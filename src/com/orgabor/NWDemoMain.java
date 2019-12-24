@@ -9,7 +9,10 @@ public class NWDemoMain {
 
 	public static void main(String[] args) {
 		try {
-			URI uri = new URI("http://username:password@myserver.com:5000/catalogue/phones?os=android#samsung");
+//			URI uri = new URI("http://username:password@myserver.com:5000/catalogue/phones?os=android#samsung");
+			URI baseUri = new URI("http://username:password@myserver.com:5000");
+			URI uri = new URI("/catalogue/phones?os=android#samsung");
+			URI resolvedUri = baseUri.resolve(uri);
 			
 			System.out.println("Scheme = " + uri.getScheme());
 			System.out.println("Scheme-specific part = " + uri.getSchemeSpecificPart());
@@ -23,7 +26,7 @@ public class NWDemoMain {
 			
 			System.out.println("\n");
 			
-			URL url = uri.toURL();
+			URL url = resolvedUri.toURL();
 			System.out.println("URL = " + url);
 			
 		} catch(URISyntaxException e) {
