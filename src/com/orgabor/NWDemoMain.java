@@ -4,6 +4,8 @@ import java.net.MalformedURLException;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.List;
 
 public class NWDemoMain {
 
@@ -15,6 +17,13 @@ public class NWDemoMain {
 			URI uri2 = new URI("/catalogue/tvs?manufacturer=samsung");
 			URI uri3 = new URI("/stores/locations?zip=12345");
 			
+			List<URI> uriList = new ArrayList<>();
+			uriList.add(uri1);
+			uriList.add(uri2);
+			uriList.add(uri3);
+			
+			
+			
 			URI resolvedUri1 = baseUri.resolve(uri1);
 			
 			URL url1 = resolvedUri1.toURL();
@@ -25,6 +34,10 @@ public class NWDemoMain {
 		} catch (MalformedURLException e) {
 			System.out.println("Malformed URL: " + e.getMessage());
 		}
+	}
+	
+	public static URI resolveUri(URI baseUri, URI uriToBeResolved) {
+		return baseUri.resolve(uriToBeResolved);
 	}
 
 }
