@@ -30,7 +30,7 @@ public class NWDemoMain {
 //				System.out.println(resolveUri(baseUri, uriEntry).toURL());
 //			}
 			
-			URL url = new URL("http://example.org/");
+			URL url = new URL("https://example.org");
 			
 			URLConnection urlConnection = url.openConnection(); // only creates the instance
 			urlConnection.setDoOutput(true);
@@ -41,7 +41,7 @@ public class NWDemoMain {
 										 new InputStreamReader(urlConnection.getInputStream()));
 //			
 			String line = "";
-			while(!line.equals("</html>")) {
+			while(line != null) {
 				line = inputStream.readLine();
 				System.out.println(line);
 			}
