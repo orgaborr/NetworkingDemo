@@ -33,7 +33,7 @@ public class NWDemoMain {
 			BufferedReader inputStream = new BufferedReader(new InputStreamReader(url.openStream()));
 			
 			String line = "";
-			while(line != null) {
+			while(!line.equals("</html>")) {
 				line = inputStream.readLine();
 				System.out.println(line);
 			}
