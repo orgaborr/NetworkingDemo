@@ -7,6 +7,7 @@ import java.net.MalformedURLException;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.net.URL;
+import java.net.URLConnection;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -30,14 +31,25 @@ public class NWDemoMain {
 //			}
 			
 			URL url = new URL("http://example.org/");
-			BufferedReader inputStream = new BufferedReader(new InputStreamReader(url.openStream()));
 			
+			URLConnection urlConnection = url.openConnection(); // only creates the instance
+			urlConnection.setDoOutput(true);
+			urlConnection.connect();
+			
+			BufferedReader inputStream = new BufferedReader(
+//										 new InputStreamReader(url.openStream()));
+										 new InputStreamReader(urlConnection.getInputStream()));
+//			
 			String line = "";
 			while(!line.equals("</html>")) {
 				line = inputStream.readLine();
 				System.out.println(line);
 			}
 			inputStream.close();
+			
+			
+			
+			
 			
 //		} catch(URISyntaxException e) {
 //			System.out.println("Bad URI Syntax: " + e.getMessage());
