@@ -22,12 +22,9 @@ public class NWDemoMain {
 			uriList.add(uri2);
 			uriList.add(uri3);
 			
-			
-			
-			URI resolvedUri1 = baseUri.resolve(uri1);
-			
-			URL url1 = resolvedUri1.toURL();
-			System.out.println("URL = " + url1);
+			for(URI uriEntry : uriList) {
+				System.out.println(resolveUri(baseUri, uriEntry).toURL());
+			}
 			
 		} catch(URISyntaxException e) {
 			System.out.println("Bad URI Syntax: " + e.getMessage());
